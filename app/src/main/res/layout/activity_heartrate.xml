@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/b_scandevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="扫描设备"/>
+
+    <!--<Button-->
+        <!--android:id="@+id/b_startOrStopRecord"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:descendantFocusability="beforeDescendants"-->
+        <!--android:textOn="停止记录"-->
+        <!--android:textOff="开始记录"/>-->
+
+    <ToggleButton
+        android:id="@+id/b_startOrStopRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:descendantFocusability="beforeDescendants"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:textOn="停止"
+        android:textOff="开始">
+    </ToggleButton>
+
+
+    <Button
+        android:id="@+id/b_getheartraterecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="心率记录分析"/>
+
+
+</LinearLayout>
