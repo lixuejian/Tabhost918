@@ -4,9 +4,6 @@ package com.example.lixuejian.tabhost918.Avtivity;
 //android.app.AlertDialog.Builder
 
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,13 +12,10 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
-//import android.support.v7.app.AlertDialog.Builder;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,12 +30,10 @@ import com.amap.api.maps2d.LocationSource;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.MyLocationStyle;
-import com.example.lixuejian.tabhost918.Network.Communication;
-import com.example.lixuejian.tabhost918.StaticInfoClass.Config;
-import com.example.lixuejian.tabhost918.StaticInfoClass.Constant;
 import com.example.lixuejian.tabhost918.R;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AHeartrate;
-import android.os.Vibrator;
+import com.example.lixuejian.tabhost918.StaticInfoClass.Constant;
+
+//import android.support.v7.app.AlertDialog.Builder;
 
 public class MapActivity extends BaseActivity implements LocationSource, AMapLocationListener {
     private final String TAG="MapActivity提示~";
@@ -75,9 +67,6 @@ public class MapActivity extends BaseActivity implements LocationSource, AMapLoc
 
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
-
-
-
 
         init();
     }
@@ -128,7 +117,6 @@ public class MapActivity extends BaseActivity implements LocationSource, AMapLoc
         super.onResume();
         mapView.onResume();
         IntentFilter intentFilter = new IntentFilter();
-        // TODO: 2017/10/11 添加action
         intentFilter.addAction(RECEIVER_ACTION);
         registerReceiver(heartRateBroadcastReceiver, intentFilter);
     }
@@ -201,15 +189,11 @@ public class MapActivity extends BaseActivity implements LocationSource, AMapLoc
                     && amapLocation.getErrorCode() == 0) {
                 //mLocationErrText.setVisibility(View.GONE);
                 mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
-
                 i++;
                 if (i==60){
                     con.uploadLocation(Constant.userName,amapLocation.getLatitude(),amapLocation.getLongitude());
                     i=0;
                 }
-
-
-
             } else {
                 String errText = "定位失败," + amapLocation.getErrorCode()+ ": " + amapLocation.getErrorInfo();
                 Log.e("AmapErr",errText);

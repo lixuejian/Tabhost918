@@ -1,8 +1,7 @@
 package com.example.lixuejian.tabhost918.Network;
 
-import android.nfc.Tag;
-import android.util.Log;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.lixuejian.tabhost918.Avtivity.BaseActivity;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Config;
@@ -517,6 +516,9 @@ public class NetWorker extends Thread {
     }
 
 
+
+
+
     // 上传一条记录
     public void uploadAddress(String username,double Latitude, double Longitude) {
 
@@ -536,6 +538,48 @@ public class NetWorker extends Thread {
 
         out.println(jo.toString());
     }
+
+    // 上传一条记录
+    public void getFriendInfo(String username,String friendname) {
+
+        Log.i(TAG,"向服务器发送获取朋友信息请求"+"username:"+username+" friendname:"+friendname);
+        // JSOn
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put("requestType", Config.REQUEST_FRIEND_INFO);
+            jo.put("username", username);
+            jo.put("friendname", friendname);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i(TAG, "发送获取朋友信息请求为：" + jo.toString());
+
+        out.println(jo.toString());
+    }
+
+    public void handgetFriendInfo(){
+        Log.i(TAG,"handgetFriendInfo：接收服务器发送的朋友信息");
+        JSONObject jo = jsonObject;
+        try {
+            String result=jo.getString("heartrecord");
+            String start=jo.getString("start");
+            String end=jo.getString("end");
+            String duration=jo.getString("duration");
+            String date=jo.getString("date");
+            int max=jo.getInt("max");
+            int min=jo.getInt("min");
+            int avarage=jo.getInt("avarage");
+            aa
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
+
 
 
 

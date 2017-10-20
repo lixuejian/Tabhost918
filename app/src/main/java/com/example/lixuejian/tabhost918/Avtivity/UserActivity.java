@@ -1,102 +1,95 @@
 package com.example.lixuejian.tabhost918.Avtivity;
 
-import android.app.TabActivity;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.RadioGroup;
-import android.widget.TabHost;
-import android.widget.TextView;
+import android.util.Log;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.LocationSource;
+import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
-import com.amap.api.maps2d.model.MyLocationStyle;
 import com.example.lixuejian.tabhost918.R;
+import com.example.lixuejian.tabhost918.StaticInfoClass.Config;
+import com.example.lixuejian.tabhost918.StaticInfoClass.Constant;
 
 public class UserActivity extends BaseActivity {
-//    TextView mt;
-//    private final String TAG="UserActivity提示~";
-//    private MapView mapView;
-//    private MapView mMapView;
-//    private AMap mAMap;
-//    private AMap aMap;
-//    private Marker mOriginStartMarker;
-//    private LocationSource.OnLocationChangedListener mListener;
-//    private AMapLocationClient mlocationClient;
-//    private AMapLocationClientOption mLocationOption;
-//    private RadioGroup mGPSModeGroup;
-//    private Marker mGraspStartMarker, mGraspEndMarker, mGraspRoleMarker;
-//
-//    private TextView text_heartrate;
-//    private TextView text_bloodpressure;
-//    private TextView text_bloodsugar;
-//
-//    private static final int STROKE_COLOR = Color.argb(180, 3, 145, 255);
-//    private static final int FILL_COLOR = Color.argb(10, 0, 0, 180);
-//    public static final String RECEIVER_ACTION = "ble_link";
+
+    private static final String TAG="UserActivity提示：";
+
+    MapView mMapView = null;
+    private AMap aMap;
+    private String friendname="bbb";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Log.i(TAG,"onCreate");
 
-//        mt= (TextView) findViewById(R.id.start_textView);
-//        mt.setText("activity_user");
-//
-//
-//        mapView = (MapView) findViewById(R.id.map2);
-//        mapView.onCreate(savedInstanceState);
-//
-//        init();
-//
-//con.getScore("bbb");
-//
-//
-//        AMapLocation location = null;
-//        location = new AMapLocation("gps");
-//        location.setLatitude(111.111);
-//        location.setLongitude(31.1111);
-//
-//        AMapLocation startLoc;
-//
-//        LatLng startPoint=new LatLng(location.getLatitude(),
-//                location.getLongitude());
-//
-//        mOriginStartMarker = mAMap.addMarker(new MarkerOptions().position(
-//                startPoint).icon(
-//                BitmapDescriptorFactory.fromResource(R.drawable.poi_marker_pressed)));
+        mMapView = (MapView) findViewById(R.id.useractivity_map_map);
+
+        mMapView.onCreate(savedInstanceState);
+
+        if (aMap == null) {
+            aMap = mMapView.getMap();
+        }
+
+        con.getFriendInfo(Constant.userName,friendname);
+
+
+
 
     }
 
 
-//    /**
-//     * 初始化AMap对象
-//     */
-//    private void init() {
-//        if (mAMap == null) {
-//            mAMap = mMapView.getMap();
-//           // mAMap.setOnMapLoadedListener(UserActivity.this);
-//        }
-//
-//    }
 
 
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
+        mMapView.onDestroy();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
+        mMapView.onResume();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
+        mMapView.onPause();
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
+        mMapView.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void processMessage(Message message) {
+        switch(message.what){
+            case Config.REQUEST_LOGIN:
+                // TODO: 2017/10/20 待修改 
+                int result = message.arg1;
+                Log.i(TAG,"UserActivity的processmessage的登录请求回执为"+"result="+result);
+
+                LatLng latLng = new LatLng(39.906901,116.397972);
+                final Marker marker = aMap.addMarker(new MarkerOptions().position(latLng).title("关心人位置").snippet("DefaultMarker"));
+                aMap.moveCamera(CameraUpdateFactory.zoomTo(17));
+
+
+
+                break;
+            default:
+                break;
+        }
 
     }
 }

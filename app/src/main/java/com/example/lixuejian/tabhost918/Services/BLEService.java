@@ -1,6 +1,5 @@
 package com.example.lixuejian.tabhost918.Services;
 
-import android.app.IntentService;
 import android.app.Service;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
@@ -9,11 +8,8 @@ import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
-import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
@@ -154,19 +150,8 @@ public class BLEService extends Service {
                 int format = (index == 1) ? BluetoothGattCharacteristic.FORMAT_UINT8 : BluetoothGattCharacteristic.FORMAT_UINT16;
                 int value = mCharacteristic.getIntValue(format, index);
                 final String description = String.valueOf(value);
-                // TODO: 2017/10/11 发送广播
 
                 sendHeartRateBoradcast(description);
-
-                /*runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println("心率："+description);
-                        Log.i(TAG,"心率****="+description);
-                        //textView.setText(description);
-                    }
-                });*/
-
             }
         }
 

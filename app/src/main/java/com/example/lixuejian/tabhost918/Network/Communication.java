@@ -195,6 +195,11 @@ public class Communication {
     public void getALLHeartrateRecord(String username){
         netWorker.getAllHeartraterecord(username);
     }
+
+    public void getFriendInfo(String myselfname,String friendname){
+        netWorker.getFriendInfo(myselfname,friendname);
+
+    }
 //
 //    public void getStepNumber(){}
 //

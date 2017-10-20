@@ -25,6 +25,8 @@ public interface Config {
     public static final int REQUEST_GET_ALL_RECORDS = 1021; //	获取某时间段记录请求
     public static final int REQUEST_MODIFY_PROPADDRESS = 2005; //	修改经纬度请求
     public static final int REQUEST_ADDRESS = 2006; //	查看朋友地址请求
+    public static final int REQUEST_FRIEND_INFO = 2007; //	查看朋友地址请求
+
 
 
 
