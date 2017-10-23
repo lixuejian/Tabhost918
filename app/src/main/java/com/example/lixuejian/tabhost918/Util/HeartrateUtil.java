@@ -3,8 +3,8 @@ package com.example.lixuejian.tabhost918.Util;
 import android.util.Log;
 
 import com.amap.api.location.AMapLocation;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AHeartrate;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AllInfoHeartRecord;
+import com.example.lixuejian.tabhost918.Model.AHeartrate;
+import com.example.lixuejian.tabhost918.Model.AllInfoHeartRecord;
 
 import java.util.ArrayList;
 

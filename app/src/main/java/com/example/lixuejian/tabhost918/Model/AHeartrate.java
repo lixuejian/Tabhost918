@@ -1,4 +1,4 @@
-package com.example.lixuejian.tabhost918.uploadHeartrate;
+package com.example.lixuejian.tabhost918.Model;
 
 /**
  * Created by lixuejian on 2017/9/27.

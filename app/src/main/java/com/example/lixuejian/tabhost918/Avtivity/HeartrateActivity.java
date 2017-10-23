@@ -7,21 +7,17 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.lixuejian.tabhost918.R;
-import com.example.lixuejian.tabhost918.StaticInfoClass.Config;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Constant;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AHeartrate;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AllInfoHeartRecord;
+import com.example.lixuejian.tabhost918.Model.AHeartrate;
+import com.example.lixuejian.tabhost918.Model.AllInfoHeartRecord;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;

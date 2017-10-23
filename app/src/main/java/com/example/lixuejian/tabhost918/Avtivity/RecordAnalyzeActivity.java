@@ -3,19 +3,16 @@ package com.example.lixuejian.tabhost918.Avtivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import com.example.lixuejian.tabhost918.R;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AllInfoHeartRecord;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AllinfoheartStatic;
+import com.example.lixuejian.tabhost918.Model.AllInfoHeartRecord;
+import com.example.lixuejian.tabhost918.Model.AllinfoheartStatic;
 
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import lecho.lib.hellocharts.listener.PieChartOnValueSelectListener;

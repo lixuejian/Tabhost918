@@ -4,6 +4,7 @@ import android.os.Message;
 import android.util.Log;
 
 import com.example.lixuejian.tabhost918.Avtivity.BaseActivity;
+import com.example.lixuejian.tabhost918.Model.FriendInfo;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Config;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Constant;
 
@@ -560,21 +561,43 @@ public class NetWorker extends Thread {
     public void handgetFriendInfo(){
         Log.i(TAG,"handgetFriendInfo：接收服务器发送的朋友信息");
         JSONObject jo = jsonObject;
+        FriendInfo friendInfo=new FriendInfo();
         try {
-            String result=jo.getString("heartrecord");
-            String start=jo.getString("start");
-            String end=jo.getString("end");
-            String duration=jo.getString("duration");
-            String date=jo.getString("date");
-            int max=jo.getInt("max");
-            int min=jo.getInt("min");
-            int avarage=jo.getInt("avarage");
-            aa
+            // TODO: 2017/10/23 获取朋友信息待修改
+            String friendname=jo.getString("friendname");
+            int sex=jo.getInt("sex");
+            int age=jo.getInt("age");
+            int sportlevel=jo.getInt("sportlevel");
+            int bloodperssure=jo.getInt("bloodperssure");
+            String uploadtime=jo.getString("uploadtime");
+            String bpuploadtime=jo.getString("bpuploadtime");
+            String bsuploadtime=jo.getString("bsuploadtime");
+            int bloodsugar=jo.getInt("bloodsugar");
+            int drinkwater=jo.getInt("drinkwater");
+            double longitude=jo.getDouble("longitude");
+            double latitude=jo.getDouble("latitude");
+
+            friendInfo.setFriendname(friendname);
+            friendInfo.setSex(sex);
+            friendInfo.setAge(age);
+            friendInfo.setSportlevel(sportlevel);
+            friendInfo.setBloodperssure(bloodperssure);
+            friendInfo.setUploadtime(uploadtime);
+            friendInfo.setBpuploadtime(bpuploadtime);
+            friendInfo.setBsuploadtime(bsuploadtime);
+            friendInfo.setBloodsugar(bloodsugar);
+            friendInfo.setBloodperssure(bloodperssure);
+            friendInfo.setDrinkwater(drinkwater);
+            friendInfo.setLongitude(longitude);
+            friendInfo.setLatitude(latitude);
+
+            Message msg=new Message();
+            msg.obj=friendInfo;
+            msg.what = Config.REQUEST_FRIEND_INFO;
+            BaseActivity.sendMessage(msg);
         }catch (JSONException e) {
             e.printStackTrace();
         }
-
-
 
     }
 
@@ -826,15 +849,15 @@ public class NetWorker extends Thread {
 
         Log.i(TAG, "传递从服务器端返回的~获取好友列表~的请求");
         JSONArray ja;
-        List<Map<String,Object>> list= new ArrayList<Map<String,Object>>();
+        List<String> list= new ArrayList<String>();
         try {
             ja = jsonObject.optJSONArray("list");
             System.out.println(ja.toString());
             for(int i = 0; i<ja.length();i++){
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put("score", ja.getJSONObject(i).getInt("score"));
-                map.put("friendName", ja.getJSONObject(i).getString("friendName"));
-                list.add(map);
+//                Map<String, Object> map = new HashMap<String, Object>();
+//                map.put("score", ja.getJSONObject(i).getInt("score"));
+//                map.put("friendName", ja.getJSONObject(i).getString("friendName"));
+                list.add(ja.getJSONObject(i).getString("friendName"));
             }
 
         } catch (JSONException e) {

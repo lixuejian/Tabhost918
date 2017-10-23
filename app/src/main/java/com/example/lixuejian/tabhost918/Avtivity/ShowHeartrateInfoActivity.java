@@ -3,23 +3,19 @@ package com.example.lixuejian.tabhost918.Avtivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lixuejian.tabhost918.Adapter.RecordAdapter;
 import com.example.lixuejian.tabhost918.R;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Config;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Constant;
 import com.example.lixuejian.tabhost918.Util.HeartrateUtil;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AHeartrate;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AllInfoHeartRecord;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AllinfoheartStatic;
+import com.example.lixuejian.tabhost918.Model.AllInfoHeartRecord;
+import com.example.lixuejian.tabhost918.Model.AllinfoheartStatic;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.lixuejian.tabhost918.R;
-import com.example.lixuejian.tabhost918.uploadHeartrate.AllInfoHeartRecord;
+import com.example.lixuejian.tabhost918.Model.AllInfoHeartRecord;
 
 import java.util.List;
 
