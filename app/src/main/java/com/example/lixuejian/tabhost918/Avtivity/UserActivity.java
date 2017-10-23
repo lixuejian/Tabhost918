@@ -1,5 +1,6 @@
 package com.example.lixuejian.tabhost918.Avtivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.example.lixuejian.tabhost918.R;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Config;
 import com.example.lixuejian.tabhost918.StaticInfoClass.Constant;
+import com.example.lixuejian.tabhost918.Util.WeiboDialogUtils;
 
 public class UserActivity extends BaseActivity {
 
@@ -21,6 +23,19 @@ public class UserActivity extends BaseActivity {
     MapView mMapView = null;
     private AMap aMap;
     private String friendname="bbb";
+    private Dialog mWeiboDialog;
+
+/*    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
+                    break;
+            }
+        }
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +53,7 @@ public class UserActivity extends BaseActivity {
 
         con.getFriendInfo(Constant.userName,friendname);
 
-
-
-
+        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(UserActivity.this, "加载中...");
     }
 
 
@@ -84,7 +97,8 @@ public class UserActivity extends BaseActivity {
                 final Marker marker = aMap.addMarker(new MarkerOptions().position(latLng).title("关心人位置").snippet("DefaultMarker"));
                 aMap.moveCamera(CameraUpdateFactory.zoomTo(17));
 
-
+               // mHandler.sendEmptyMessageDelayed(1, 2000);
+                WeiboDialogUtils.closeDialog(mWeiboDialog);
 
                 break;
             default:

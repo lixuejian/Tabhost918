@@ -141,6 +141,7 @@ public class BLEDeviceLinkActivity extends BaseActivity {
                 if (gatt == null) {
                     return;
                 }
+                gatt.disconnect();
                 gatt.close();
                 gatt = null;
             }
